@@ -14,7 +14,7 @@
 		174893611C8D134A00A35886 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1748935F1C8D134A00A35886 /* LaunchScreen.storyboard */; };
 		174893691C8D139400A35886 /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 174893681C8D139400A35886 /* SpriteKit.framework */; };
 		1748936B1C8D177000A35886 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1748936A1C8D177000A35886 /* GameScene.swift */; };
-		17A863F21C9039FA00505E03 /* item.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 17A863F11C9039FA00505E03 /* item.mp3 */; };
+		17E20AFF1C97E9BC000336E5 /* item.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 17E20AFE1C97E9BC000336E5 /* item.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,7 +27,7 @@
 		174893621C8D134A00A35886 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		174893681C8D139400A35886 /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
 		1748936A1C8D177000A35886 /* GameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
-		17A863F11C9039FA00505E03 /* item.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = item.mp3; path = ../../../Downloads/item.mp3; sourceTree = "<group>"; };
+		17E20AFE1C97E9BC000336E5 /* item.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = item.mp3; path = ../../../Downloads/item.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,7 +68,7 @@
 				1748935D1C8D134A00A35886 /* Assets.xcassets */,
 				1748936A1C8D177000A35886 /* GameScene.swift */,
 				1748935F1C8D134A00A35886 /* LaunchScreen.storyboard */,
-				17A863F11C9039FA00505E03 /* item.mp3 */,
+				17E20AFE1C97E9BC000336E5 /* item.mp3 */,
 				174893621C8D134A00A35886 /* Info.plist */,
 			);
 			path = FlappyBird;
@@ -134,7 +134,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				174893611C8D134A00A35886 /* LaunchScreen.storyboard in Resources */,
-				17A863F21C9039FA00505E03 /* item.mp3 in Resources */,
+				17E20AFF1C97E9BC000336E5 /* item.mp3 in Resources */,
 				1748935E1C8D134A00A35886 /* Assets.xcassets in Resources */,
 				1748935C1C8D134A00A35886 /* Main.storyboard in Resources */,
 			);
