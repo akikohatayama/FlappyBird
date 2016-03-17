@@ -75,10 +75,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         // 2つのアニメーションを順に実行するアクションを作成
         let wallAnimation = SKAction.sequence([moveWall, removeWall])
         
-        // スプライトを作成
-        //        item = SKSpriteNode(texture: itemTextureA)
-        //        item.position = CGPoint(x: 40, y:self.frame.size.height * 0.4)
-        
         let actionGroup = SKAction.group([flap, wallAnimation])
         
         // アイテムを生成するアクションを作成
@@ -90,17 +86,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             // 画面のY軸の中央値
             let center_y = self.frame.size.height / 2
-            // 壁のY座標を上下ランダムにさせるときの最大値
-            let random_y_range = self.frame.size.height / 4
-            // 下の壁のY軸の下限
-            let under_wall_lowest_y = UInt32( center_y - itemTextureA.size().height / 2 -  random_y_range / 2)
+            // アイテムのY座標を上下ランダムにさせるときの最大値
+            let random_y_range = self.frame.size.height / 8
+            // アイテムのY軸の下限
+            let under_wall_lowest_y = UInt32( center_y - itemTextureA.size().height / 3 -  random_y_range / 2)
             // 1〜random_y_rangeまでのランダムな整数を生成
             let random_y = arc4random_uniform( UInt32(random_y_range) )
             // Y軸の下限にランダムな値を足して、下の壁のY座標を決定
             let under_wall_y = CGFloat(under_wall_lowest_y + random_y)
-            
-            // キャラが通り抜ける隙間の長さ
-            //let slit_length = self.frame.size.height / 6
             
             // スプライトに物理演算を設定する
             itemNode.physicsBody = SKPhysicsBody(rectangleOfSize: itemTextureA.size())
@@ -111,26 +104,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             self.wallNode.addChild(itemNode)
             
             // アイテムスコアアップ用のノード
-            itemNode.physicsBody = SKPhysicsBody(rectangleOfSize: CGSize(width: itemTextureA.size().width, height: self.frame.size.height))
+            itemNode.physicsBody = SKPhysicsBody(rectangleOfSize: CGSize(width: itemTextureA.size().width, height: itemTextureA.size().height))
             itemNode.physicsBody?.dynamic = false
             itemNode.physicsBody?.categoryBitMask = self.itemCategory
             itemNode.physicsBody?.contactTestBitMask = self.birdCategory
             itemNode.runAction(actionGroup)
             
-            /*let itemScoreNode = SKNode()
-            itemScoreNode.position = CGPoint(x: itemTextureA.size().width + self.bird.size.width / 2, y: self.frame.height / 2.0)
-            itemScoreNode.physicsBody = SKPhysicsBody(rectangleOfSize: CGSize(width: itemTextureA.size().width, height: self.frame.size.height))
-            itemScoreNode.physicsBody?.dynamic = false
-            itemScoreNode.physicsBody?.categoryBitMask = self.itemCategory
-            itemScoreNode.physicsBody?.contactTestBitMask = self.birdCategory
-            
-            itemNode.addChild(itemScoreNode)
-            itemNode.runAction(actionGroup)*/
-            
         })
         
         // 次のアイテム作成までの待ち時間のアクションを作成
-        let waitAnimation = SKAction.waitForDuration(2)
+        let waitAnimation = SKAction.waitForDuration(3)
         
         // アイテムを作成->待ち時間->アイテムを作成を無限に繰り替えるアクションを作成
         let repeatForeverAnimation = SKAction.repeatActionForever(SKAction.sequence([createItemAnimation, waitAnimation]))
@@ -258,6 +241,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             under.position = CGPoint(x: 0.0, y: under_wall_y)
             wall.addChild(under)
             
+            // スプライトに物理演算を設定する
+            under.physicsBody = SKPhysicsBody(rectangleOfSize: wallTexture.size())
+            under.physicsBody?.categoryBitMask = self.wallCategory
+            
             // 衝突の時に動かないように設定する
             under.physicsBody?.dynamic = false
             
@@ -267,7 +254,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             // スプライトに物理演算を設定する
             upper.physicsBody = SKPhysicsBody(rectangleOfSize: wallTexture.size())
-            under.physicsBody?.categoryBitMask = self.wallCategory
+            upper.physicsBody?.categoryBitMask = self.wallCategory
             
             // 衝突の時に動かないように設定する
             upper.physicsBody?.dynamic = false
